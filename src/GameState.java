@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * This class handles technical side of game - game state. It checks possible moves for selected figure,
  * whose turn is it, etc. Class also contains two dimensional array representing actual game state - for
@@ -80,10 +78,6 @@ class GameState {
         int x = updatedTile.x;
         int y = updatedTile.y;
         tilesState[y][x] = updatedTile.getFieldContent();
-//        for (int[] tilesA: tilesState) {
-//                System.out.println(Arrays.toString(tilesA));
-//        }
-//        System.out.println("");
     }
 
     /**
@@ -364,6 +358,9 @@ class GameState {
                 }
             }
         }
+        // TODO: reorganize this method to check whether move will cause check condition even for same color figures
+        // IDEA: iterate through board and for each tile with state different than 0 check possible moves for check conditions.
+        // Maybe this method should return possibleMoveArray and check cond checking logic should be moved to another method.
         return checkCond;
     }
 
